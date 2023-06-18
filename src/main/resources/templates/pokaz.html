@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="pl">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<p align="center"> <h2>Lista Kwiatów</h2></p> <br>
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Nazwa</th>
+    <th>Kolor</th>
+    <th>Ilość</th>
+    <th>Rodzaj</th>
+  </tr>
+  <tr th:each="kwiaty: ${kwiaty}">
+    <td th:text="${kwiaty.id}">ID</td>
+    <td th:text="${kwiaty.nazwa}">Nazwa</td>
+    <td th:text="${kwiaty.kolor}">Kolor</td>
+    <td th:text="${kwiaty.ilosc}">Ilość</td>
+    <td th:text="${kwiaty.rodzaj}">Rodzaj</td>
+  </tr>
+</table>
+</body>
+</html>

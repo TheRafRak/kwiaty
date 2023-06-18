@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodawanie kwiatów</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+<form action="/dodaj" method="post">
+    <table>
+        <tr>
+            <td>Podaj nazwę:</td>
+            <td><label>
+                <input name="nazwa">
+            </label></td>
+            <td>Podaj kolor:</td>
+            <td><label>
+                <input name="kolor">
+            </label></td>
+        </tr>
+        <tr>
+            <td>Podaj ilość:</td>
+            <td><label>
+                <input name="ilosc" type="number">
+            </label></td>
+        </tr>
+        <tr>
+            <td>Podaj rodzaj:</td>
+            <td><label>
+                <input name="rodzaj">
+            </label></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Dodaj"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
