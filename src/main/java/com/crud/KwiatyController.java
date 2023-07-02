@@ -5,20 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.Optional;
-
 @Controller
 public class KwiatyController {
     @Autowired
     private KwiatyRepository kwiatyRepository;
-
     @RequestMapping("/formularz")
     public String form() {
         return "formularz";
     }
-
     @RequestMapping("/dodaj")
     public String dodajemyDane(
             @RequestParam("nazwa") String nazwa,
@@ -33,20 +27,17 @@ public class KwiatyController {
         model.addAttribute("kwiaty", kwiaty);
         return "Widok";
     }
-
     @RequestMapping("/pokaz")
     public String pokaz(Model model) {
         model.addAttribute("kwiaty", kwiatyRepository.findAll());
         return "pokaz";
     }
-
     @RequestMapping("/kasuj")
     public String kasuj(@RequestParam("id") Long id, Model model) {
         kwiatyRepository.deleteById(id);
         model.addAttribute("kwiaty", kwiatyRepository.findAll());
         return "pokaz";
     }
-
     @RequestMapping("/aktualizacja")
     public String update(
             @RequestParam("id") Long id,
@@ -56,23 +47,9 @@ public class KwiatyController {
             @RequestParam("rodzaj") String rodzaj,
             Model model) throws Exception {
 
-//        kwiatyRepository.findById(id);
-//        Kwiaty kwiaty
-//        kwiaty = kwiatyRepository.findById(id);
-//                kwiaty.
-//        kwiaty.setIlosc(ilosc);
-//        kwiaty.setNazwa(nazwa);
-//        kwiaty.setRodzaj(rodzaj);
-//        kwiaty.setKolor(kolor);
-//        //kwiaty.setId(id);
-//        //System.out.println(kwiaty);
-//        kwiatyRepository.save(kwiaty);
-
-        //updateFlower(kwiatyRepository.getById(id),ilosc,nazwa,rodzaj,kolor);
         model.addAttribute("kwiaty", updateFlower(kwiatyRepository.getById(id),ilosc,nazwa,rodzaj,kolor));
         return "pokaz";
     }
-
     Kwiaty updateFlower(Kwiaty kwiat, int ilosc, String nazwa, String rodzaj, String kolor){
         Kwiaty flower = kwiatyRepository.getById(kwiat.getId());
         flower.setIlosc(ilosc);
@@ -82,8 +59,6 @@ public class KwiatyController {
         kwiatyRepository.save(flower);
         return kwiat;
     }
-
-
     @RequestMapping("/wyszukaj")
     public String wyszukaj(@RequestParam("nazwa") String nazwa, Model model) {
         model.addAttribute("kwiaty", kwiatyRepository.findByNazwa(nazwa));

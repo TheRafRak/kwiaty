@@ -1,7 +1,6 @@
 package com.crud;
 
 import javax.persistence.*;
-
 @Entity
 @Table(name = "Kwiaty")
 public class Kwiaty {
@@ -25,14 +24,12 @@ public class Kwiaty {
     // Konstruktory
     public Kwiaty() {
     }
-
     public Kwiaty(String nazwa, String kolor, int ilosc, String rodzaj) {
         this.nazwa = nazwa;
         this.kolor = kolor;
         this.ilosc = ilosc;
         this.rodzaj = rodzaj;
     }
-
     // Gettery i Settery
     public Long getId() {
         return id;
@@ -73,8 +70,6 @@ public class Kwiaty {
     public void setRodzaj(String rodzaj) {
         this.rodzaj = rodzaj;
     }
-
-
     @Override
     public String toString() {
         return "Kwiaty{" +
