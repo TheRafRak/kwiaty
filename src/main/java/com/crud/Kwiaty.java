@@ -26,8 +26,7 @@ public class Kwiaty {
     public Kwiaty() {
     }
 
-    public Kwiaty(long id,String nazwa, String kolor, int ilosc, String rodzaj) {
-        this.id = id;
+    public Kwiaty(String nazwa, String kolor, int ilosc, String rodzaj) {
         this.nazwa = nazwa;
         this.kolor = kolor;
         this.ilosc = ilosc;

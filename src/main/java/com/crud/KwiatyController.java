@@ -17,15 +17,15 @@ public class KwiatyController {
     }
 
     @RequestMapping("/dodaj")
-    public String dodajKwiaty(
-            @RequestParam("id") Long id,
+    public String dodajemyDane(
             @RequestParam("nazwa") String nazwa,
             @RequestParam("kolor") String kolor,
             @RequestParam("ilosc") int ilosc,
             @RequestParam("rodzaj") String rodzaj,
-            Model model) {
-        Kwiaty kwiaty = new Kwiaty(id,nazwa, kolor, ilosc, rodzaj);
-        //System.out.println(kwiaty);
+            Model model)
+        throws Exception{
+        Kwiaty kwiaty = new Kwiaty(nazwa, kolor, ilosc, rodzaj);
+        System.out.println(kwiaty);
         kwiatyRepository.save(kwiaty);
         model.addAttribute("kwiaty", kwiaty);
         return "Widok";
@@ -46,14 +46,13 @@ public class KwiatyController {
 
     @RequestMapping("/aktualizacja")
     public String update(
-            @RequestParam("id") Long id,
             @RequestParam("nazwa") String nazwa,
             @RequestParam("kolor") String kolor,
             @RequestParam("ilosc") int ilosc,
             @RequestParam("rodzaj") String rodzaj,
             Model model) throws Exception {
-        Kwiaty kwiaty = new Kwiaty(id,nazwa, kolor, ilosc, rodzaj);
-        kwiaty.setId(id);
+        Kwiaty kwiaty = new Kwiaty(nazwa, kolor, ilosc, rodzaj);
+        //kwiaty.setId(id);
         //System.out.println(kwiaty);
         kwiatyRepository.save(kwiaty);
         model.addAttribute("kwiaty", kwiaty);
