@@ -26,7 +26,8 @@ public class Kwiaty {
     public Kwiaty() {
     }
 
-    public Kwiaty(String nazwa, String kolor, int ilosc, String rodzaj) {
+    public Kwiaty(long id,String nazwa, String kolor, int ilosc, String rodzaj) {
+        this.id = id;
         this.nazwa = nazwa;
         this.kolor = kolor;
         this.ilosc = ilosc;
@@ -74,7 +75,7 @@ public class Kwiaty {
         this.rodzaj = rodzaj;
     }
 
-    // Metoda toString
+
     @Override
     public String toString() {
         return "Kwiaty{" +

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <title>Aktualizuj</title>
+    </head>
+<body>
+<form action="/aktualizacja">
+    <table>
+        <tr>
+            <td>Podaj ilosc</td>
+            <td><input name="ilosc" id="ilosc" th:value="${kwiaty.ilosc}"></td>
+        </tr>
+        <tr>
+            <td>Podaj kolor</td>
+            <td><input name="kolor" id="kolor" th:value="${kwiaty.kolor}"></td>
+        </tr>
+        <tr>
+            <td>Podaj nazwa</td>
+            <td><input name="nazwa" id="nazwa" th:value="${kwiaty.nazwa}"></td>
+        </tr>
+        <tr>
+            <td>Podaj rodzaj</td>
+            <td><input name="rodzaj" id="rodzaj" th:value="${kwiaty.rodzaj}"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Zapisz"></td>
+        </tr>
+    </table>
+    <input name="id" id="id" readonly hidden th:value="${kwiaty.id}">
+</form>
+</body>
+</html>
