@@ -6,6 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Optional;
+
 @Controller
 public class KwiatyController {
     @Autowired
@@ -46,17 +49,38 @@ public class KwiatyController {
 
     @RequestMapping("/aktualizacja")
     public String update(
+            @RequestParam("id") Long id,
             @RequestParam("nazwa") String nazwa,
             @RequestParam("kolor") String kolor,
             @RequestParam("ilosc") int ilosc,
             @RequestParam("rodzaj") String rodzaj,
             Model model) throws Exception {
-        Kwiaty kwiaty = new Kwiaty(nazwa, kolor, ilosc, rodzaj);
-        //kwiaty.setId(id);
-        //System.out.println(kwiaty);
-        kwiatyRepository.save(kwiaty);
-        model.addAttribute("kwiaty", kwiaty);
+
+//        kwiatyRepository.findById(id);
+//        Kwiaty kwiaty
+//        kwiaty = kwiatyRepository.findById(id);
+//                kwiaty.
+//        kwiaty.setIlosc(ilosc);
+//        kwiaty.setNazwa(nazwa);
+//        kwiaty.setRodzaj(rodzaj);
+//        kwiaty.setKolor(kolor);
+//        //kwiaty.setId(id);
+//        //System.out.println(kwiaty);
+//        kwiatyRepository.save(kwiaty);
+
+        //updateFlower(kwiatyRepository.getById(id),ilosc,nazwa,rodzaj,kolor);
+        model.addAttribute("kwiaty", updateFlower(kwiatyRepository.getById(id),ilosc,nazwa,rodzaj,kolor));
         return "pokaz";
+    }
+
+    Kwiaty updateFlower(Kwiaty kwiat, int ilosc, String nazwa, String rodzaj, String kolor){
+        Kwiaty flower = kwiatyRepository.getById(kwiat.getId());
+        flower.setIlosc(ilosc);
+        flower.setNazwa(nazwa);
+        flower.setRodzaj(rodzaj);
+        flower.setKolor(kolor);
+        kwiatyRepository.save(flower);
+        return kwiat;
     }
 
 
